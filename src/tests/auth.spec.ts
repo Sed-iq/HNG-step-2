@@ -5,7 +5,6 @@ import Organisation from '../models/organisation_model';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import error_handler from "../utils/error_handler";
-import ENV from "../utils/env_utils";
 
 jest.mock('../models/user_model');
 jest.mock('../models/organisation_model');

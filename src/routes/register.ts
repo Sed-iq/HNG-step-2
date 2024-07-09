@@ -51,8 +51,9 @@ export default async (req: Request, res: Response) => {
     else {
         try {
             const $password = await bcrypt.hash(password, 10)
-            const findUser = await User.findOne({ mapToModel: email })
+            const findUser = await User.findOne({ where: { email } })
             if (findUser) {
+                console.log(findUser)
                 const error = {
                     "status": "Bad request",
                     "message": "Registration unsuccessful",

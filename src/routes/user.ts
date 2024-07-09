@@ -28,6 +28,7 @@ export default async (req: Request, res: Response) => {
             "message": "Authentication failed",
             "statusCode": 401
         }
-        error_handler(res, error, error.statusCode)
+        res.status(error.statusCode).json({ status: error.status, messgage: error.message, statusCode: error.statusCode })
+
     }
 }

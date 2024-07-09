@@ -27,6 +27,7 @@ export default async (req: Request, res: Response) => {
             "message": "Client error",
             "statusCode": 400
         }
-        res.status(error.statusCode).json(error)
+        res.status(error.statusCode).json({ status: error.status, messgage: error.message, statusCode: error.statusCode })
+
     }
 }

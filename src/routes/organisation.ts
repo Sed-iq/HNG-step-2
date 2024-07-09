@@ -23,7 +23,7 @@ export default async (req: Request, res: Response) => {
             "message": "An error occurred",
             "statusCode": 500
         }
-        error_handler(res, error, error.statusCode)
+        res.status(error.statusCode).json({ status: error.status, messgage: error.message, statusCode: error.statusCode })
     }
 }
 export async function getSingleOrg(req: Request, res: Response) {
@@ -34,19 +34,24 @@ export async function getSingleOrg(req: Request, res: Response) {
                 orgId: user
             }
         })
-
-        const response = {
-            status: "success",
-            message: "Organisation found!",
-            data: org
+        if (org) {
+            const response = {
+                status: "success",
+                message: "Organisation found!",
+                data: org
+            }
+            res.json(response)
         }
-        res.json(response)
+        else {
+            throw false
+        }
     } catch (err) {
         const error = {
             "status": "Bad request",
             "message": "An error occurred",
             "statusCode": 500
         }
-        error_handler(res, error, error.statusCode)
+        res.status(error.statusCode).json({ status: error.status, messgage: error.message, statusCode: error.statusCode })
+
     }
 }

@@ -87,7 +87,7 @@ export default async (req: Request, res: Response) => {
                 "message": "Registration unsuccessful",
                 "statusCode": 400
             }
-            error_handler(res, error, 400)
+            res.status(error.statusCode).json({ status: error.status, messgage: error.message, statusCode: error.statusCode })
         }
     }
 }

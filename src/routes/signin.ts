@@ -22,7 +22,7 @@ export default (req: Request, res: Response) => {
         error_handler(res, error)
     }
     else {
-        User.findOne({ mapToModel: email }).then(async (data: any) => {
+        User.findOne({ where: { email } }).then(async (data: any) => {
             const ispassword = await bcrypt.compare(password, data.password)
             if (ispassword === true) {
                 const accesstoken = jwt.sign({ userId: data.userId }, ENV.JWT_SECRET)

@@ -15,7 +15,7 @@ declare module 'express' {
 }
 
 app.post("/auth/register", register)
-app.post("/auth/signin", signin)
+app.post("/auth/login", signin)
 app.get("/api/users/:id", guard, user)
 app.get("/api/organisations", guard, organisation)
 app.get("/api/organisations/:orgId", guard, getSingleOrg)
